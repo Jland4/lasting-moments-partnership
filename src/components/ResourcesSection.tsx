@@ -1,5 +1,6 @@
 import { FileText, MessageSquare, DollarSign, PlayCircle, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const resources = [
   {
@@ -8,6 +9,7 @@ const resources = [
     description: "One-page resource designed for use during arrangement conferences. Helps counselors explain Lasting Moments clearly in under two minutes using plain, compassionate language.",
     tag: "Family-Facing",
     action: "View Resource",
+    path: "/resources/arrangement-room-explainer",
   },
   {
     icon: MessageSquare,
@@ -15,6 +17,7 @@ const resources = [
     description: "Professional, conversational script for preneed discussions. Frames Lasting Moments as a legacy enhancement that fits naturally with trust-based conversations.",
     tag: "Staff Resource",
     action: "View Script",
+    path: "/resources/preneed-counselor-script",
   },
   {
     icon: DollarSign,
@@ -22,6 +25,7 @@ const resources = [
     description: "Overview of how funeral homes generate revenue, where it fits in current offerings, and why it delivers high perceived family value.",
     tag: "Business",
     action: "Request Access",
+    path: "/partners/economics",
   },
   {
     icon: PlayCircle,
@@ -29,6 +33,7 @@ const resources = [
     description: "Simple visual walkthrough of the family experience—from recording to milestone selection to delivery concept.",
     tag: "Demo",
     action: "View Walkthrough",
+    path: "/demo/family-experience-overview",
   },
 ];
 
@@ -70,9 +75,8 @@ const ResourcesSection = () => {
                 {resource.description}
               </p>
 
-              <Button variant="ghost" className="group/btn p-0 h-auto font-semibold text-primary hover:text-accent">
-                {resource.action}
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+              <Button asChild className="w-full">
+                <Link to={resource.path}>{resource.action}</Link>
               </Button>
             </div>
           ))}
