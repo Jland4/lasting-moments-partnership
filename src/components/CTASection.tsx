@@ -32,8 +32,8 @@ const CTASection = () => {
             </Button>
           </div>
 
-          <p className="mt-8 text-sm text-primary-foreground/50">
-            We respond to all inquiries within one business day
+          <p className="mt-8 text-sm text-primary-foreground/60">
+            <strong className="text-primary-foreground/80">No obligation.</strong> We respond within one business day.
           </p>
         </div>
       </div>
