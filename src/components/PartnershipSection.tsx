@@ -64,6 +64,23 @@ const PartnershipSection = () => {
             ))}
           </div>
         </div>
+
+        {/* Value without price pressure */}
+        <div className="mt-16 max-w-3xl mx-auto">
+          <div className="bg-card rounded-2xl p-8 md:p-10 card-elevated text-center">
+            <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+              Designed to Create Value Without Price Pressure
+            </h3>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Lasting Moments is structured as a high-perceived-value enhancement that families choose because of meaning—not obligation.
+              </p>
+              <p>
+                Partnership models are designed to fit naturally within existing pricing conversations, with flexible revenue sharing and no upfront costs.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

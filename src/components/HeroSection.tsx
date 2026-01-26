@@ -51,6 +51,11 @@ const HeroSection = () => {
               </a>
             </Button>
           </div>
+          
+          {/* Reassurance */}
+          <p className="mt-6 text-sm text-primary-foreground/60 animate-fade-in-delay-2">
+            No obligation. We respond within one business day.
+          </p>
 
           {/* Trust indicators */}
           <div className="mt-16 pt-8 border-t border-primary-foreground/10 animate-fade-in-delay-3">
