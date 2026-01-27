@@ -22,8 +22,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Only run if secrets are configured to prevent information leakage
+    if: ${{ secrets.DD_API_KEY != '' && secrets.DD_APP_KEY != '' }}
 
     steps:
+    - name: Validate secrets
+      run: |
+        if [ -z "${{ secrets.DD_API_KEY }}" ] || [ -z "${{ secrets.DD_APP_KEY }}" ]; then
+          echo "Required secrets are not configured. Skipping workflow."
+          exit 0
+        fi
+
     - uses: actions/checkout@v4
 
     # Run Synthetic tests within your GitHub workflow.
@@ -31,8 +40,8 @@ jobs:
     - name: Run Datadog Synthetic tests
       uses: DataDog/synthetics-ci-github-action@87b505388a22005bb8013481e3f73a367b9a53eb # v1.4.0
       with:
-        api_key: ${{secrets.DD_API_KEY}}
-        app_key: ${{secrets.DD_APP_KEY}}
+        api_key: ${{ secrets.DD_API_KEY }}
+        app_key: ${{ secrets.DD_APP_KEY }}
         test_search_query: 'tag:e2e-tests' #Modify this tag to suit your tagging strategy
 
 
