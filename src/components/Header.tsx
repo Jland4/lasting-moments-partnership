@@ -1,53 +1,97 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  
+  const isPartnersPage = location.pathname === "/partners";
+  const isFamiliesPage = location.pathname === "/families";
+  const isHomePage = location.pathname === "/";
 
-  const navLinks = [
-    { href: "#how-it-works", label: "How It Works" },
-    { href: "#why-partner", label: "Why Partner" },
-    { href: "#partnership", label: "Partnership Model" },
-    { href: "#resources", label: "Partner Resources" },
-  ];
+  // Dynamic nav links based on current page
+  const getNavLinks = () => {
+    if (isPartnersPage) {
+      return [
+        { href: "/partners", label: "For Partners", isLink: true },
+        { href: "/families", label: "For Families", isLink: true },
+      ];
+    }
+    if (isFamiliesPage) {
+      return [
+        { href: "/partners", label: "For Partners", isLink: true },
+        { href: "/families", label: "For Families", isLink: true },
+      ];
+    }
+    // Homepage
+    return [
+      { href: "/partners", label: "For Funeral Homes", isLink: true },
+      { href: "/families", label: "For Families", isLink: true },
+    ];
+  };
+
+  const navLinks = getNavLinks();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-serif text-lg font-bold">L</span>
             </div>
             <span className="font-serif text-xl font-semibold text-foreground">
               Lasting Moments
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
+              link.isLink ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    location.pathname === link.href 
+                      ? 'text-foreground' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild>
-              <a href="#contact">Schedule Demo</a>
-            </Button>
-            <Button variant="cta" size="sm" asChild>
-              <a href="#contact">Partner With Us</a>
-            </Button>
-          </div>
+          {/* Desktop CTA - only show on partner page */}
+          {isPartnersPage && (
+            <div className="hidden md:flex items-center gap-4">
+              <Button variant="cta" size="sm" asChild>
+                <a href="#contact">Request Partnership Info</a>
+              </Button>
+            </div>
+          )}
+          
+          {/* Homepage CTA */}
+          {isHomePage && (
+            <div className="hidden md:flex items-center gap-4">
+              <Button variant="cta" size="sm" asChild>
+                <Link to="/partners">Learn More</Link>
+              </Button>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
           <button
@@ -68,23 +112,44 @@ const Header = () => {
           <nav className="md:hidden pt-4 pb-2 border-t border-border mt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
+                link.isLink ? (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`text-sm font-medium transition-colors ${
+                      location.pathname === link.href 
+                        ? 'text-foreground' 
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
-              <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ctaSecondary" size="sm" asChild>
-                  <a href="#contact">Schedule Demo</a>
-                </Button>
-                <Button variant="cta" size="sm" asChild>
-                  <a href="#contact">Partner With Us</a>
-                </Button>
-              </div>
+              {isPartnersPage && (
+                <div className="flex flex-col gap-2 pt-4 border-t border-border">
+                  <Button variant="cta" size="sm" asChild>
+                    <a href="#contact">Request Partnership Info</a>
+                  </Button>
+                </div>
+              )}
+              {isHomePage && (
+                <div className="flex flex-col gap-2 pt-4 border-t border-border">
+                  <Button variant="cta" size="sm" asChild>
+                    <Link to="/partners">Learn More</Link>
+                  </Button>
+                </div>
+              )}
             </div>
           </nav>
         )}

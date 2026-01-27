@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import Index from "@/pages/Index";
+import Partners from "@/pages/Partners";
+import Families from "@/pages/Families";
 
 import ArrangementRoomExplainer from "@/pages/resources/ArrangementRoomExplainer";
 import PreneedCounselorScript from "@/pages/resources/PreneedCounselorScript";
@@ -11,6 +13,8 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/partners" element={<Partners />} />
+      <Route path="/families" element={<Families />} />
 
       <Route path="/resources/arrangement-room-explainer" element={<ArrangementRoomExplainer />} />
       <Route path="/resources/preneed-counselor-script" element={<PreneedCounselorScript />} />
