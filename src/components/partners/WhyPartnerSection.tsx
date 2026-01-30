@@ -34,26 +34,36 @@ const pillars = [
     icon: TrendingUp,
     label: "Revenue Growth",
     phrase: "Premium enhancement with no overhead",
+    iconColor: "text-emerald-600",
+    bgColor: "bg-emerald-100",
   },
   {
     icon: Target,
     label: "Market Differentiation",
     phrase: "Exclusive offering competitors lack",
+    iconColor: "text-amber-600",
+    bgColor: "bg-amber-100",
   },
   {
     icon: Users,
     label: "Family Impact",
     phrase: "Meaningful experiences that generate referrals",
+    iconColor: "text-rose-600",
+    bgColor: "bg-rose-100",
   },
   {
     icon: Award,
     label: "Brand Reputation",
     phrase: "Positioned as thoughtful and innovative",
+    iconColor: "text-yellow-600",
+    bgColor: "bg-yellow-100",
   },
   {
     icon: Settings,
     label: "Operational Simplicity",
     phrase: "No added workload for staff",
+    iconColor: "text-slate-600",
+    bgColor: "bg-slate-100",
   },
 ];
 
@@ -120,8 +130,8 @@ const WhyPartnerSection = () => {
                   viewport={{ once: true }}
                   className="flex flex-col items-center text-center"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <pillar.icon className="w-7 h-7 text-primary" />
+                  <div className={`w-14 h-14 rounded-xl ${pillar.bgColor} flex items-center justify-center mb-4`}>
+                    <pillar.icon className={`w-7 h-7 ${pillar.iconColor}`} />
                   </div>
                   <h4 className="font-semibold text-foreground text-sm mb-1">
                     {pillar.label}
