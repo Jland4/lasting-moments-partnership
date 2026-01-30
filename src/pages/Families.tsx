@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import FamiliesHeroSection from "@/components/families/FamiliesHeroSection";
 import FamiliesHowItWorksSection from "@/components/families/FamiliesHowItWorksSection";
 import FamiliesExamplesSection from "@/components/families/FamiliesExamplesSection";
+import FamiliesPricingSection from "@/components/families/FamiliesPricingSection";
 import FamiliesPrivacySection from "@/components/families/FamiliesPrivacySection";
 
 const Families = () => {
@@ -13,6 +14,7 @@ const Families = () => {
         <FamiliesHeroSection />
         <FamiliesHowItWorksSection />
         <FamiliesExamplesSection />
+        <FamiliesPricingSection />
         <FamiliesPrivacySection />
       </main>
       <Footer />
