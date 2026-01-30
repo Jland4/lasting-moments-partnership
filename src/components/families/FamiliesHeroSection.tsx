@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import ladyAndPhone from "@/assets/lady-and-phone.png";
 
 const FamiliesHeroSection = () => {
+  const scrollToPricing = () => {
+    document.getElementById('pricing-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-[80vh] flex items-center hero-gradient overflow-hidden">
       {/* Subtle pattern overlay */}
@@ -36,6 +42,16 @@ const FamiliesHeroSection = () => {
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-delay-1">
               Lasting Moments helps you record heartfelt video messages that your loved ones will receive in the future — at the moments that matter most.
             </p>
+
+            {/* CTA Button */}
+            <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
+              <Button variant="hero" size="lg" onClick={scrollToPricing}>
+                View Packages
+              </Button>
+              <Button variant="heroOutline" size="lg" asChild>
+                <Link to="/contact">Contact Us</Link>
+              </Button>
+            </div>
 
             {/* Trust indicators */}
             <div className="mt-12 pt-8 border-t border-primary-foreground/10 animate-fade-in-delay-3">
