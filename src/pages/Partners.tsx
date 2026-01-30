@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import PartnersHeroSection from "@/components/partners/PartnersHeroSection";
 import WhatIsSection from "@/components/partners/WhatIsSection";
 import StaffRolesSection from "@/components/partners/StaffRolesSection";
+import WhyPartnerSection from "@/components/partners/WhyPartnerSection";
 import PartnershipValueSection from "@/components/partners/PartnershipValueSection";
 import PartnerDemoFlowSection from "@/components/partners/PartnerDemoFlowSection";
 import StaffResourcesSection from "@/components/partners/StaffResourcesSection";
@@ -17,6 +18,7 @@ const Partners = () => {
         <PartnersHeroSection />
         <WhatIsSection />
         <StaffRolesSection />
+        <WhyPartnerSection />
         <PartnershipValueSection />
         <PartnerDemoFlowSection />
         <StaffResourcesSection />
